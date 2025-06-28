@@ -1,14 +1,30 @@
+// create a sketch area with and height variable
 const gridSize = 600;
 
+// selecting the div and assigning the specified w/h in px variable to sketch area.
 const sketchArea = document.querySelector("#sketch-area");
 sketchArea.style.width = `${gridSize}px`;
 sketchArea.style.height = `${gridSize}px`;
 
-const btn = document.querySelector("button");
+// selecting and create a event to the button so that it fires the whole createGride func. once clicked.
+const btn = document.querySelector("#btn");
 btn.addEventListener("click", createGridCell);
 
+// create a color func.
 function changeColor() {
     this.style.backgroundColor = "black";
+}
+
+const multiColorBtn = document.querySelector("#multi-color");
+
+function multiColor() {
+    const red = Math.floor(Math.random() * 255) + 1;
+    const green = Math.floor(Math.random() * 255) + 1;
+    const blue = Math.floor(Math.random() * 255) + 1;
+
+    const randomColor = `rgb(${red}, ${green}, ${blue})`;
+    console.log(`Clicked cell, color: ${randomColor}`);
+    this.style.backgroundColor = randomColor;
 }
 
 function createGridCell() {
@@ -28,7 +44,10 @@ function createGridCell() {
         gridCell.classList.add("cell");
         sketchArea.appendChild(gridCell)
 
+    // callback for color func.
         gridCell.addEventListener("mouseover", changeColor);
+        gridCell.addEventListener("mouseover", multiColor);
+
     }
 
 }
