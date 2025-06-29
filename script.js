@@ -31,6 +31,15 @@ function createGridCell() {
     let input = document.querySelector("#input").value;
     const userInput = parseInt(input);
 
+    if (userInput > 100) {
+        const para = document.createElement("p");
+        para.textContent = "The Value most be lessthan or equal to 100";
+        para.style.cssText = "text-align: center; font-size: 30px; margin: auto;"
+        // sketchArea.style.cssText = "display: flex; align-item: center; justify-content: center;"
+        sketchArea.appendChild(para);
+        return;
+    } 
+
     let rowsAndCols = (userInput * userInput);
 
     sketchArea.innerHTML = "";
