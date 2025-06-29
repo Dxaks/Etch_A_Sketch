@@ -11,21 +11,20 @@ const btn = document.querySelector("#btn");
 btn.addEventListener("click", createGridCell);
 
 // create a color func.
-function changeColor() {
-    this.style.backgroundColor = "black";
-}
-
 const multiColorBtn = document.querySelector("#multi-color");
 
-function multiColor() {
-    const red = Math.floor(Math.random() * 255) + 1;
-    const green = Math.floor(Math.random() * 255) + 1;
-    const blue = Math.floor(Math.random() * 255) + 1;
+let multiColor = false;
 
-    const randomColor = `rgb(${red}, ${green}, ${blue})`;
-    console.log(`Clicked cell, color: ${randomColor}`);
-    this.style.backgroundColor = randomColor;
-}
+multiColorBtn.addEventListener("click", () => {
+
+    multiColor = !multiColor;
+   if(multiColor) {
+    multiColorBtn.textContent = "Multi-Color";
+   } else {
+    multiColorBtn.textContent = "Black-Color"
+   }
+})
+
 
 function createGridCell() {
 
@@ -45,9 +44,20 @@ function createGridCell() {
         sketchArea.appendChild(gridCell)
 
     // callback for color func.
-        gridCell.addEventListener("mouseover", changeColor);
-        gridCell.addEventListener("mouseover", multiColor);
+        gridCell.addEventListener("mouseover", () => {
+            if (multiColor) {
 
+            const red = Math.floor(Math.random() * 255) + 1;
+            const green = Math.floor(Math.random() * 255) + 1;
+            const blue = Math.floor(Math.random() * 255) + 1;
+
+            const randomColor = `rgb(${red}, ${green}, ${blue})`;
+            console.log(`Clicked cell, color: ${randomColor}`);
+            gridCell.style.backgroundColor = randomColor;
+
+            } else {
+            gridCell.style.backgroundColor = "black";
+            }
+        });
     }
-
 }
