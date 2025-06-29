@@ -7,6 +7,12 @@ body {
     background-color: aliceblue;
 }
 
+h1 {
+    text-align: center;
+    margin: 10px auto;
+
+}
+
 #controller {
     display: flex;
    justify-content: center;
@@ -31,7 +37,7 @@ input {
 #sketch-area {
     display: flex;
     flex-wrap: wrap;
-    margin: 50px auto;
+    margin: 20px auto;
     background: white;
     box-shadow: 10px 10x rgba(0, 170, 255, 0.034);
 }
